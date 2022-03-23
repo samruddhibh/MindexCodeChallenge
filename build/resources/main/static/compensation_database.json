@@ -1,0 +1,13 @@
+[ 
+	{
+	  "employee" : {
+	    "employeeId" : "62c1084e-6e34-4630-93fd-9153afb65309",
+	    "firstName" : "Pete",
+	    "lastName" : "Best",
+	    "position" : "Developer II",
+	    "department" : "Engineering"
+	  },
+	  "salary" : "125000.00",
+	  "effectiveDate" : "03/22/2022"
+	}
+]

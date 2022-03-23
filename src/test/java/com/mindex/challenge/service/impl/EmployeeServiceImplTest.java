@@ -1,6 +1,7 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.data.Employee;
+import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.EmployeeService;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +25,8 @@ public class EmployeeServiceImplTest {
 
     private String employeeUrl;
     private String employeeIdUrl;
+    
+    private String empReportingStructureUrl;
 
     @Autowired
     private EmployeeService employeeService;
@@ -38,6 +41,8 @@ public class EmployeeServiceImplTest {
     public void setup() {
         employeeUrl = "http://localhost:" + port + "/employee";
         employeeIdUrl = "http://localhost:" + port + "/employee/{id}";
+        
+        empReportingStructureUrl = "http://localhost:" + port + "/reportingStructure/{id}";
     }
 
     @Test
@@ -82,5 +87,11 @@ public class EmployeeServiceImplTest {
         assertEquals(expected.getLastName(), actual.getLastName());
         assertEquals(expected.getDepartment(), actual.getDepartment());
         assertEquals(expected.getPosition(), actual.getPosition());
+    }
+    
+    @Test
+    public void testReportingStructure() {
+    	ReportingStructure reportingStructure = restTemplate.getForEntity(empReportingStructureUrl, ReportingStructure.class, "16a596ae-edd3-4847-99fe-c4518e82c86f").getBody();
+        assertEquals(4, reportingStructure.getNumberOfReports());
     }
 }

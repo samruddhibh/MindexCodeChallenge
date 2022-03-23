@@ -1,6 +1,8 @@
 package com.mindex.challenge;
 
+import com.mindex.challenge.dao.CompensationRepository;
 import com.mindex.challenge.dao.EmployeeRepository;
+import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.data.Employee;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +19,9 @@ public class DataBootstrapTest {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+    
+    @Autowired
+    private CompensationRepository compensationRepository;
 
     @Test
     public void test() {
@@ -26,5 +31,14 @@ public class DataBootstrapTest {
         assertEquals("Lennon", employee.getLastName());
         assertEquals("Development Manager", employee.getPosition());
         assertEquals("Engineering", employee.getDepartment());
+    }
+    
+    @Test
+    public void testCompensation() {
+    	Employee employee = employeeRepository.findByEmployeeId("62c1084e-6e34-4630-93fd-9153afb65309");
+        Compensation comp = compensationRepository.findByEmployee(employee);
+        assertNotNull(comp);
+        assertEquals("125000.00", comp.getSalary().toString());
+        assertEquals("03/22/2022", comp.getEffectiveDate());
     }
 }
