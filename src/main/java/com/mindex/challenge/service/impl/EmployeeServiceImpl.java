@@ -75,7 +75,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     		for(Employee emp : employee.getDirectReports()) {
     			empStr = new EmployeeStructure();
         		this.count++;
-        		
         		// recursive call to getStructure() to get the hierarchy structure for every employee in the hierarchy
         		empStr = getStructure(emp.getEmployeeId(), empStr);
         		
