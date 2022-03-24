@@ -84,3 +84,25 @@ Compensation from the persistence layer.
 
 ## Delivery
 Please upload your results to a publicly accessible Git repo. Free ones are provided by Github and Bitbucket.
+
+----Comments from Samruddhi----
+1. Added a file "compensation_database.json" which has compensation data that will be bootstrapped when the application is started.
+2. For Adding Compensation data for employees, I have made an assumption that at any given point only 1 record can exist, hence not allowing adding compensation data for employee if record already exists.
+
+Below is the Sample payload request for POST API for Compensation type.
+
+URL- http://localhost:8080/compensation
+Request Payload-
+{
+    "employee":{
+    "employeeId" : "c0c2293d-16bd-4603-8e08-638a9d18b22c",
+    "firstName" : "George",
+    "lastName" : "Harrison",
+    "position" : "Developer III",
+    "department" : "Engineering"
+  },
+  "salary":"128000.00",
+  "effectiveDate":"03/23/2022"
+}
+
+
